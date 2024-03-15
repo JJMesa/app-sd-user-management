@@ -1,0 +1,20 @@
+<div class="edit-form">
+  <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="user_info">
+      <div class="input_container">
+        <label for="name" class="input_label">Nombres: </label>
+        <input id="name" formControlName="name" class="input_field" type="text"
+          placeholder="Nombre del usuario">
+      </div>
+      <div class="input_container">
+        <label for="lastName" class="input_label">Apellidos: </label>
+        <input id="lastName" formControlName="lastName" class="input_field" type="text"
+          placeholder="Apellidos del usuario">
+      </div>
+    </div>
+    <button class="action_btn" type="submit">
+      {{ user.userId === 0 || user.userId === undefined ? 'Guardar' : 'Editar' }}
+    </button>
+  </form>
+  <button class="close_btn" (click)="closeSection();">X</button>
+</div>

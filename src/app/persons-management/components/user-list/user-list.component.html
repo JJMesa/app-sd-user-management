@@ -1,0 +1,46 @@
+<main class="main">
+  <div class="content">
+    <div class="card" *ngIf="!sectionTrigger">
+      <div class="header">
+        <div class="btn-container">
+          <button class="actionButton centerContent" (click)="changeSection();">Agregar usuario
+            <span class="material-icons">
+              add_circle_outline
+            </span></button>
+        </div>
+        <div class="btn-container">
+          <button class="actionButton centerContent" (click)="getAllUsers();">Refrescar
+            <span class="material-icons">
+              refresh
+            </span></button>
+        </div>
+      </div>
+      <div class="body">
+        <table>
+          <thead>
+            <tr class="titles">
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="users.length > 0">
+            <tr *ngFor="let user of users">
+              <td class="tdDocument">{{ user.userId }}</td>
+              <td class="tdPosition">{{ user.name }} {{ user.lastName }}</td>
+              <td>
+                <button class="actionButton" (click)="changeSection(user.userId);">
+                  <span class="material-icons">edit</span>
+                </button>
+                <button class="actionButton" (click)="deleteUser(user.userId)">
+                  <span class="material-icons">delete</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <app-user-form style="display: flex; justify-content: center;" [user]="user" *ngIf="sectionTrigger" (closeModal)="backSection();"></app-user-form>
+  </div>
+</main>
